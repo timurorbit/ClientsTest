@@ -32,7 +32,7 @@ public class Client extends AbstractBaseEntity {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public Client(Integer id, String name, String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber) {
+    public Client(Integer id, String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;

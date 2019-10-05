@@ -21,7 +21,7 @@ import java.util.Objects;
 import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalDate;
 import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalTime;
 
-public class MealServlet extends HttpServlet {
+public class ClientsServlet extends HttpServlet {
 
     private ConfigurableApplicationContext springContext;
     private MealRestController mealController;
@@ -58,7 +58,7 @@ public class MealServlet extends HttpServlet {
         } else {
             mealController.update(client, getId(request));
         }
-        response.sendRedirect("meals");
+        response.sendRedirect("clients");
     }
 
     @Override
@@ -69,14 +69,14 @@ public class MealServlet extends HttpServlet {
             case "delete":
                 int id = getId(request);
                 mealController.delete(id);
-                response.sendRedirect("meals");
+                response.sendRedirect("clients");
                 break;
             case "create":
             case "update":
                 final Client client = "create".equals(action) ?
-                        new Client("firstName","lastName",LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "status","good","address","email", "+79991769407") :
+                        new Client("firstName","lastName",LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "status","good","address","email", "+79991776644") :
                         mealController.get(getId(request));
-                request.setAttribute("meal", client);
+                request.setAttribute("client", client);
                 request.getRequestDispatcher("/mealForm.jsp").forward(request, response);
                 break;
             case "filter":

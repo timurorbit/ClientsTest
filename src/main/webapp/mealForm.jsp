@@ -15,16 +15,36 @@
     <form method="post" action="clients">
         <input type="hidden" name="id" value="${client.id}">
         <dl>
-            <dt>DateTime:</dt>
+            <dt>First name:</dt>
+            <dd><input type="text" value="${client.firstName}" size=40 name="firstName" required></dd>
+        </dl>
+        <dl>
+            <dt>Last name:</dt>
+            <dd><input type="text" value="${client.lastName}" name="lastName" required></dd>
+        </dl>
+        <dl>
+            <dt>Date time last contact:</dt>
             <dd><input type="datetime-local" value="${client.dateTime}" name="dateTime" required></dd>
         </dl>
         <dl>
-            <dt>Description:</dt>
-            <dd><input type="text" value="${client.description}" size=40 name="description" required></dd>
+            <dt>Status:</dt>
+            <dd><input type="text" value="${client.status}" name="status" required></dd>
         </dl>
         <dl>
-            <dt>Calories:</dt>
-            <dd><input type="number" value="${client.calories}" name="calories" required></dd>
+            <dt>Satisfaction:</dt>
+            <dd><input type="text" value="${client.satisfaction}" name="satisfaction" required></dd>
+        </dl>
+        <dl>
+            <dt>Address:</dt>
+            <dd><input type="text" value="${client.address}" name="address" required></dd>
+        </dl>
+        <dl>
+            <dt>Email:</dt>
+            <dd><input type="text" value="${client.email}" name="email" required></dd>
+        </dl>
+        <dl>
+            <dt>Telephone number:</dt>
+            <dd><input type="text" value="${client.telephoneNumber}" name="telephoneNumber" required></dd>
         </dl>
         <button type="submit">Save</button>
         <button onclick="window.history.back()" type="button">Cancel</button>

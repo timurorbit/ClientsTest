@@ -32,7 +32,7 @@ public class JdbcClientRepositoryImpl implements MealRepository {
         this.jdbcTemplate = jdbcTemplate;
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
         this.insertClient = new SimpleJdbcInsert(jdbcTemplate)
-                .withTableName("meals")
+                .withTableName("clients")
         .usingGeneratedKeyColumns("id");
     }
 
@@ -54,7 +54,7 @@ public class JdbcClientRepositoryImpl implements MealRepository {
             Number newKey = insertClient.executeAndReturnKey(map);
             client.setId(newKey.intValue());
         } else {
-            namedParameterJdbcTemplate.update("UPDATE clients SET firstname=:first_name, lastname=:last_name, date_time=:date_time, status=:status, satisfaction=:satisfaction, address=:address, " +
+            namedParameterJdbcTemplate.update("UPDATE clients SET firstname=:firstName, lastname=:lastName, date_time=:date_time, status=:status, satisfaction=:satisfaction, address=:address, " +
                     "email=:email, telephonenumber=:telephoneNumber WHERE id=:id", map);
             return client;
         }
