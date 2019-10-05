@@ -85,12 +85,12 @@ public class MealServlet extends HttpServlet {
                 LocalTime startTime = parseLocalTime(request.getParameter("startTime"));
                 LocalTime endTime = parseLocalTime(request.getParameter("endTime"));
                 request.setAttribute("meals", mealController.getBetween(startDate, startTime, endDate, endTime));
-                request.getRequestDispatcher("/meals.jsp").forward(request, response);
+                request.getRequestDispatcher("/clients.jsp").forward(request, response);
                 break;
             case "all":
             default:
                 request.setAttribute("clients", mealController.getAll());
-                request.getRequestDispatcher("/meals.jsp").forward(request, response);
+                request.getRequestDispatcher("/clients.jsp").forward(request, response);
                 break;
         }
     }
