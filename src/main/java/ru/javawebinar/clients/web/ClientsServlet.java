@@ -3,7 +3,7 @@ package ru.javawebinar.clients.web;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.StringUtils;
-import ru.javawebinar.clients.web.meal.MealRestController;
+import ru.javawebinar.clients.web.client.ClientRestController;
 import ru.javawebinar.clients.model.Client;
 
 import javax.servlet.ServletConfig;
@@ -24,13 +24,13 @@ import static ru.javawebinar.clients.util.DateTimeUtil.parseLocalTime;
 public class ClientsServlet extends HttpServlet {
 
     private ConfigurableApplicationContext springContext;
-    private MealRestController mealController;
+    private ClientRestController mealController;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         springContext = new ClassPathXmlApplicationContext("spring/spring-app.xml", "spring/spring-db.xml");
-        mealController = springContext.getBean(MealRestController.class);
+        mealController = springContext.getBean(ClientRestController.class);
     }
 
     @Override

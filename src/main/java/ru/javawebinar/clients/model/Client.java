@@ -1,5 +1,6 @@
 package ru.javawebinar.clients.model;
 
+import java.sql.Blob;
 import java.time.LocalDateTime;
 
 public class Client extends AbstractBaseEntity {
@@ -18,6 +19,8 @@ public class Client extends AbstractBaseEntity {
     private String email;
 
     private String telephoneNumber;
+
+    private Blob image;
 
 
     public Client(String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber) {
@@ -42,6 +45,19 @@ public class Client extends AbstractBaseEntity {
         this.address = address;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public Client(Integer id, String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber, Blob image) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateTime = dateTime;
+        this.status = status;
+        this.satisfaction = satisfaction;
+        this.address = address;
+        this.email = email;
+        this.telephoneNumber = telephoneNumber;
+        this.image = image;
     }
 
     public Client() {

@@ -14,5 +14,6 @@ CREATE TABLE clients
     satisfaction    VARCHAR   NOT NULL,
     address         VARCHAR   NOT NULL,
     email           VARCHAR   NOT NULL,
-    telephoneNumber VARCHAR   NOT NULL
+    telephoneNumber VARCHAR   NOT NULL,
+    image          bytea
 );

@@ -1,4 +1,4 @@
-package ru.javawebinar.clients.web.meal;
+package ru.javawebinar.clients.web.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,13 +16,13 @@ import static ru.javawebinar.clients.util.ValidationUtil.assureIdConsistent;
 import static ru.javawebinar.clients.util.ValidationUtil.checkNew;
 
 @Controller
-public class MealRestController {
-    private static final Logger log = LoggerFactory.getLogger(MealRestController.class);
+public class ClientRestController {
+    private static final Logger log = LoggerFactory.getLogger(ClientRestController.class);
 
     private final ClientService service;
 
     @Autowired
-    public MealRestController(ClientService service) {
+    public ClientRestController(ClientService service) {
         this.service = service;
     }
 
