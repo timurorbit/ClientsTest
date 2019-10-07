@@ -1,10 +1,10 @@
-package ru.javawebinar.topjava.web;
+package ru.javawebinar.clients.web;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.StringUtils;
-import ru.javawebinar.topjava.model.Client;
-import ru.javawebinar.topjava.web.meal.MealRestController;
+import ru.javawebinar.clients.web.meal.MealRestController;
+import ru.javawebinar.clients.model.Client;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -18,8 +18,8 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
-import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalDate;
-import static ru.javawebinar.topjava.util.DateTimeUtil.parseLocalTime;
+import static ru.javawebinar.clients.util.DateTimeUtil.parseLocalDate;
+import static ru.javawebinar.clients.util.DateTimeUtil.parseLocalTime;
 
 public class ClientsServlet extends HttpServlet {
 

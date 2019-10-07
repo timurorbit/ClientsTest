@@ -11,7 +11,7 @@
     <h3><a href="index.html">Home</a></h3>
     <hr>
     <h2>${param.action == 'create' ? 'Create client' : 'Edit client'}</h2>
-    <jsp:useBean id="client" type="ru.javawebinar.topjava.model.Client" scope="request"/>
+    <jsp:useBean id="client" type="ru.javawebinar.clients.model.Client" scope="request"/>
     <form method="post" action="clients">
         <input type="hidden" name="id" value="${client.id}">
         <dl>

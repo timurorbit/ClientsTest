@@ -49,7 +49,7 @@
         </tr>
         </thead>
         <c:forEach items="${clients}" var="client">
-            <jsp:useBean id="client" type="ru.javawebinar.topjava.model.Client"/>
+            <jsp:useBean id="client" type="ru.javawebinar.clients.model.Client"/>
             <tr data-mealExcess="${client}">
                 <td>${client.firstName}</td>
                 <td>${client.lastName}</td>

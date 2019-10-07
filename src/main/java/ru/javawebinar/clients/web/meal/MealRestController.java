@@ -1,19 +1,19 @@
-package ru.javawebinar.topjava.web.meal;
+package ru.javawebinar.clients.web.meal;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import ru.javawebinar.topjava.model.Client;
-import ru.javawebinar.topjava.service.ClientService;
-import ru.javawebinar.topjava.web.SecurityUtil;
+import ru.javawebinar.clients.web.SecurityUtil;
+import ru.javawebinar.clients.model.Client;
+import ru.javawebinar.clients.service.ClientService;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-import static ru.javawebinar.topjava.util.ValidationUtil.assureIdConsistent;
-import static ru.javawebinar.topjava.util.ValidationUtil.checkNew;
+import static ru.javawebinar.clients.util.ValidationUtil.assureIdConsistent;
+import static ru.javawebinar.clients.util.ValidationUtil.checkNew;
 
 @Controller
 public class MealRestController {

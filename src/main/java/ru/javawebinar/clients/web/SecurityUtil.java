@@ -1,8 +1,8 @@
-package ru.javawebinar.topjava.web;
+package ru.javawebinar.clients.web;
 
-import ru.javawebinar.topjava.model.AbstractBaseEntity;
+import ru.javawebinar.clients.model.AbstractBaseEntity;
 
-import static ru.javawebinar.topjava.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
+import static ru.javawebinar.clients.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
 
 public class SecurityUtil {
 

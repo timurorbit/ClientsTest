@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava.model;
+package ru.javawebinar.clients.model;
 
 public enum Role {
     ROLE_USER,

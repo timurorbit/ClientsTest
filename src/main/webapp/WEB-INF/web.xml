@@ -8,7 +8,7 @@
 
     <servlet>
         <servlet-name>ClientServlet</servlet-name>
-        <servlet-class>ru.javawebinar.topjava.web.ClientsServlet</servlet-class>
+        <servlet-class>ru.javawebinar.clients.web.ClientsServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
     <servlet-mapping>

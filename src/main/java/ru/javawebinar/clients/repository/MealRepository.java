@@ -1,6 +1,6 @@
-package ru.javawebinar.topjava.repository;
+package ru.javawebinar.clients.repository;
 
-import ru.javawebinar.topjava.model.Client;
+import ru.javawebinar.clients.model.Client;
 
 import java.time.LocalDateTime;
 import java.util.List;

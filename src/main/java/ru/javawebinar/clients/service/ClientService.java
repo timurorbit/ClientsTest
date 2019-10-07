@@ -1,18 +1,18 @@
-package ru.javawebinar.topjava.service;
+package ru.javawebinar.clients.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
-import ru.javawebinar.topjava.model.Client;
-import ru.javawebinar.topjava.repository.MealRepository;
+import ru.javawebinar.clients.repository.MealRepository;
+import ru.javawebinar.clients.model.Client;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static ru.javawebinar.topjava.util.DateTimeUtil.adjustEndDateTime;
-import static ru.javawebinar.topjava.util.DateTimeUtil.adjustStartDateTime;
-import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFoundWithId;
+import static ru.javawebinar.clients.util.DateTimeUtil.adjustEndDateTime;
+import static ru.javawebinar.clients.util.DateTimeUtil.adjustStartDateTime;
+import static ru.javawebinar.clients.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
 public class ClientService {

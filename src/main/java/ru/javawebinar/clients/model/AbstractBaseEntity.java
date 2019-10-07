@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava.model;
+package ru.javawebinar.clients.model;
 
 public abstract class AbstractBaseEntity {
     public static final int START_SEQ = 100000;
