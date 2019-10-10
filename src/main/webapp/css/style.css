@@ -9,6 +9,11 @@ dt {
     width: 170px;
 }
 
+img{
+    max-width: 512px;
+    max-height: 256px;
+}
+
 dd {
     display: inline-block;
     margin-left: 8px;

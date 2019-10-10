@@ -3,8 +3,8 @@
 
 <html>
 <head>
-    <title>Meal</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Client</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
 <section>
@@ -12,7 +12,7 @@
     <hr>
     <h2>${param.action == 'create' ? 'Create client' : 'Edit client'}</h2>
     <jsp:useBean id="client" type="ru.javawebinar.clients.model.Client" scope="request"/>
-    <form method="post" action="clients">
+    <form method="post" action="clients" >
         <input type="hidden" name="id" value="${client.id}">
         <dl>
             <dt>First name:</dt>
@@ -46,8 +46,26 @@
             <dt>Telephone number:</dt>
             <dd><input type="text" value="${client.telephoneNumber}" name="telephoneNumber" required></dd>
         </dl>
+ <!--       <dl>
+            <dt>Image name:</dt>
+            <dd><input type="text" value="${client.imagePath}" name="imagePath" required></dd>
+        </dl>
+        <dl>
+            <dt>Image:</dt>
+            <dd><input type="image" src="images//${client.imagePath}"></dd>
+        </dl>                        -->
+        <img src="images/${client.imagePath}" >
         <button type="submit">Save</button>
         <button onclick="window.history.back()" type="button">Cancel</button>
+    </form>
+
+    <h3>File Upload:</h3>
+    Select a file to upload: <br />
+    <form action = "clients" method = "post"
+          enctype = "multipart/form-data">
+        <input type = "image" name = "file" size = "50" />
+        <br />
+        <input type = "submit" value = "Upload File" />
     </form>
 </section>
 </body>

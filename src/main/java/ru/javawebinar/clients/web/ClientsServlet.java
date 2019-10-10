@@ -50,7 +50,8 @@ public class ClientsServlet extends HttpServlet {
                 request.getParameter("satisfaction"),
                 request.getParameter("address"),
                 request.getParameter("email"),
-                request.getParameter("telephoneNumber")
+                request.getParameter("telephoneNumber"),
+                request.getParameter("image")
               );
 
         if (StringUtils.isEmpty(request.getParameter("id"))) {
@@ -77,7 +78,7 @@ public class ClientsServlet extends HttpServlet {
                         new Client("firstName","lastName",LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "status","good","address","email", "+79991776644") :
                         mealController.get(getId(request));
                 request.setAttribute("client", client);
-                request.getRequestDispatcher("/mealForm.jsp").forward(request, response);
+                request.getRequestDispatcher("/clientForm.jsp").forward(request, response);
                 break;
             case "filter":
                 LocalDate startDate = parseLocalDate(request.getParameter("startDate"));

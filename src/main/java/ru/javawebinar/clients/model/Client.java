@@ -20,7 +20,7 @@ public class Client extends AbstractBaseEntity {
 
     private String telephoneNumber;
 
-    private Blob image;
+    private String imagePath;
 
 
     public Client(String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber) {
@@ -47,8 +47,8 @@ public class Client extends AbstractBaseEntity {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public Client(Integer id, String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber, Blob image) {
-        super(id);
+    public Client( String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber, String imagePath) {
+        this.id = null;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateTime = dateTime;
@@ -57,7 +57,7 @@ public class Client extends AbstractBaseEntity {
         this.address = address;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
-        this.image = image;
+        this.imagePath = imagePath;
     }
 
     public Client() {
@@ -126,6 +126,14 @@ public class Client extends AbstractBaseEntity {
 
     public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     @Override

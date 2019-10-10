@@ -15,5 +15,5 @@ CREATE TABLE clients
     address         VARCHAR   NOT NULL,
     email           VARCHAR   NOT NULL,
     telephoneNumber VARCHAR   NOT NULL,
-    image          bytea
+    imagePath          VARCHAR
 );
