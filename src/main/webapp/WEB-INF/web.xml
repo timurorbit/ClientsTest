@@ -4,10 +4,10 @@
 		 http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <context-param>
-        <description>Location to store uploaded file</description>
+        <description>Location to store uploaded file</description>         <!-- move to servlet & db -->
         <param-name>file-upload</param-name>
         <param-value>
-            d:\IdeaProjects\Clients\webapp\images            <!-- must be changed.... hardcoded -->
+            C:\\var\webapp\images        <!-- must be changed.... hardcoded -->
         </param-value>
     </context-param>
 

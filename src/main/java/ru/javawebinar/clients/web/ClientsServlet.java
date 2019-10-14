@@ -1,5 +1,6 @@
 package ru.javawebinar.clients.web;
 
+
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.StringUtils;
@@ -7,30 +8,42 @@ import ru.javawebinar.clients.web.client.ClientRestController;
 import ru.javawebinar.clients.model.Client;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import javax.servlet.http.Part;
+import java.awt.*;
+import java.io.*;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Objects;
 
 import static ru.javawebinar.clients.util.DateTimeUtil.parseLocalDate;
 import static ru.javawebinar.clients.util.DateTimeUtil.parseLocalTime;
 
+
+@MultipartConfig
 public class ClientsServlet extends HttpServlet {
 
     private ConfigurableApplicationContext springContext;
     private ClientRestController mealController;
+    private String filePath;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         springContext = new ClassPathXmlApplicationContext("spring/spring-app.xml", "spring/spring-db.xml");
         mealController = springContext.getBean(ClientRestController.class);
+        filePath = getServletContext().getInitParameter("file-upload");
     }
 
     @Override
@@ -50,15 +63,67 @@ public class ClientsServlet extends HttpServlet {
                 request.getParameter("satisfaction"),
                 request.getParameter("address"),
                 request.getParameter("email"),
-                request.getParameter("telephoneNumber"),
-                request.getParameter("image")
-              );
-
+                request.getParameter("telephoneNumber")
+        );
+          if (request.getPart("file") != null) {
+            Part filePart = request.getPart("file");
+            String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+            try (InputStream fileContent = filePart.getInputStream();
+                 OutputStream os = new FileOutputStream(new File(filePath + fileName))) {
+                byte[] buffer = new byte[1024];
+                int length;
+                while ((length = fileContent.read(buffer)) > 0) {
+                    os.write(buffer, 0, length);
+                }
+            }
+            client.setImagePath(fileName);
+        } else if (request.getParameter("imagePath") != null) {
+            client.setImagePath("imagePath");
+        } else {
+            client.setImagePath("NoImage");
+        }
         if (StringUtils.isEmpty(request.getParameter("id"))) {
             mealController.create(client);
         } else {
             mealController.update(client, getId(request));
         }
+
+
+
+
+    /*    String contentType = request.getContentType();
+        if (contentType.indexOf("multipart/form-data") >= 0) {         //request.get image
+            DiskFileItemFactory factory = new DiskFileItemFactory();
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            try {
+                List fileItems = upload.parseRequest(request);
+
+                Iterator i = fileItems.iterator();
+                while (i.hasNext()) {
+                    FileItem fi = (FileItem) i.next();
+                    if (!fi.isFormField()) {
+                        String fieldName = fi.getFieldName();
+                        String fileName = fi.getName();
+                        boolean isInMemory = fi.isInMemory();
+                        long sizeInBytes = fi.getSize();
+                        if (fileName.lastIndexOf("\\") >= 0) {
+                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\")));
+                        } else {
+                            file = new File(filePath + fileName.substring(fileName.lastIndexOf("\\") + 1));
+                        }
+                        fi.write(file);
+                        log("file Uploading");
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            client.setImagePath("NoImage");
+        }    */
+
+
         response.sendRedirect("clients");
     }
 
@@ -75,8 +140,9 @@ public class ClientsServlet extends HttpServlet {
             case "create":
             case "update":
                 final Client client = "create".equals(action) ?
-                        new Client("firstName","lastName",LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "status","good","address","email", "+79991776644") :
+                        new Client("firstName", "lastName", LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES), "status", "good", "address", "email", "+79991776644", "NoImage.png") :
                         mealController.get(getId(request));
+                request.setAttribute("image", (filePath + mealController.get(getId(request))));
                 request.setAttribute("client", client);
                 request.getRequestDispatcher("/clientForm.jsp").forward(request, response);
                 break;

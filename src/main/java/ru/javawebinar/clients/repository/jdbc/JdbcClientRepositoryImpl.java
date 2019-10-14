@@ -49,13 +49,14 @@ public class JdbcClientRepositoryImpl implements MealRepository {
                 .addValue("address", client.getAddress())
                 .addValue("email", client.getEmail())
                 .addValue("telephoneNumber", client.getTelephoneNumber())
-                .addValue("user_id", userId);
+                .addValue("user_id", userId)
+                .addValue("imagePath", client.getImagePath());
         if (client.isNew()){
             Number newKey = insertClient.executeAndReturnKey(map);
             client.setId(newKey.intValue());
         } else {
             namedParameterJdbcTemplate.update("UPDATE clients SET firstname=:firstName, lastname=:lastName, date_time=:date_time, status=:status, satisfaction=:satisfaction, address=:address, " +
-                    "email=:email, telephonenumber=:telephoneNumber WHERE id=:id", map);
+                    "email=:email, telephonenumber=:telephoneNumber, imagepath=:imagePath WHERE id=:id", map);
             return client;
         }
         return client;
