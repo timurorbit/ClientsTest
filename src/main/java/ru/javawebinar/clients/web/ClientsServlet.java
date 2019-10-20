@@ -1,6 +1,7 @@
 package ru.javawebinar.clients.web;
 
 
+;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.util.StringUtils;
@@ -8,23 +9,19 @@ import ru.javawebinar.clients.web.client.ClientRestController;
 import ru.javawebinar.clients.model.Client;
 
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import java.awt.*;
 import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Objects;
 
 import static ru.javawebinar.clients.util.DateTimeUtil.parseLocalDate;
@@ -87,6 +84,16 @@ public class ClientsServlet extends HttpServlet {
         } else {
             mealController.update(client, getId(request));
         }
+      File file = new File(filePath + client.getImagePath());
+        response.setHeader("Content-Type", getServletContext().getMimeType(client.getImagePath()));
+        response.setHeader("Content-Length", String.valueOf(file.length()));
+        response.setHeader("Content-Disposition", "inline; filename=\"" + client.getImagePath() + "\"");                 /*  trying to create
+        Files.copy(file.toPath(), response.getOutputStream());
+
+
+
+
+        response.setContentType(getServletContext().getMimeType(client.getImagePath()));
 
 
 

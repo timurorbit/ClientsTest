@@ -38,7 +38,7 @@ public class JdbcClientRepositoryImpl implements MealRepository {
 
 
     @Override
-    public Client save(Client client, int userId) {
+    public Client save(Client client) {
         MapSqlParameterSource map = new MapSqlParameterSource()
                 .addValue("id", client.getId())
                 .addValue("firstName", client.getFirstName())
@@ -49,7 +49,6 @@ public class JdbcClientRepositoryImpl implements MealRepository {
                 .addValue("address", client.getAddress())
                 .addValue("email", client.getEmail())
                 .addValue("telephoneNumber", client.getTelephoneNumber())
-                .addValue("user_id", userId)
                 .addValue("imagePath", client.getImagePath());
         if (client.isNew()){
             Number newKey = insertClient.executeAndReturnKey(map);
@@ -63,12 +62,12 @@ public class JdbcClientRepositoryImpl implements MealRepository {
     }
 
     @Override
-    public boolean delete(int id, int userId) {
+    public boolean delete(int id) {
         return jdbcTemplate.update("DELETE FROM clients WHERE id=?", id) != 0;
     }
 
     @Override
-    public Client get(int id, int userId) {
+    public Client get(int id) {
         List<Client> clients = jdbcTemplate.query("SELECT * FROM clients WHERE id=?", ROW_MAPPER, id);
         return DataAccessUtils.singleResult(clients);
     }
@@ -81,7 +80,7 @@ public class JdbcClientRepositoryImpl implements MealRepository {
     }
 
     @Override
-    public List<Client> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId) {
+    public List<Client> getBetween(LocalDateTime startDate, LocalDateTime endDate) {
         return getAll().stream()
                 .filter(m -> Util.isBetween(m.getDateTime(), startDate, endDate))
                 .collect(Collectors.toList());

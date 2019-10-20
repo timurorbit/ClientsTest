@@ -1,4 +1,4 @@
-package ru.javawebinar.topjava.repository.inmemory;
+package ru.repository.inmemory;
 
 import org.springframework.stereotype.Repository;
 import ru.javawebinar.clients.model.AbstractBaseEntity;

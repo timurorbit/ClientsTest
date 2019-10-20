@@ -7,17 +7,17 @@ import java.util.List;
 
 public interface MealRepository {
     // null if updated meal do not belong to userId
-    Client save(Client client, int userId);
+    Client save(Client client);
 
     // false if meal do not belong to userId
-    boolean delete(int id, int userId);
+    boolean delete(int id);
 
     // null if meal do not belong to userId
-    Client get(int id, int userId);
+    Client get(int id);
 
     // ORDERED dateTime desc
     List<Client> getAll();
 
     // ORDERED dateTime desc
-    List<Client> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId);
+    List<Client> getBetween(LocalDateTime startDate, LocalDateTime endDate);
 }

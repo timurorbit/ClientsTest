@@ -24,31 +24,31 @@ public class ClientService {
         this.repository = repository;
     }
 
-    public Client get(int id, int userId) {
-        return checkNotFoundWithId(repository.get(id, userId), id);
+    public Client get(int id) {
+        return checkNotFoundWithId(repository.get(id), id);
     }
 
-    public void delete(int id, int userId) {
-        checkNotFoundWithId(repository.delete(id, userId), id);
+    public void delete(int id) {
+        checkNotFoundWithId(repository.delete(id), id);
     }
 
-    public List<Client> getBetweenDates(@Nullable LocalDate startDate, @Nullable LocalDate endDate, int userId) {
-        return getBetweenDateTimes(adjustStartDateTime(startDate), adjustEndDateTime(endDate), userId);
+    public List<Client> getBetweenDates(@Nullable LocalDate startDate, @Nullable LocalDate endDate) {
+        return getBetweenDateTimes(adjustStartDateTime(startDate), adjustEndDateTime(endDate));
     }
 
-    public List<Client> getBetweenDateTimes(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId) {
-        return repository.getBetween(startDateTime, endDateTime, userId);
+    public List<Client> getBetweenDateTimes(LocalDateTime startDateTime, LocalDateTime endDateTime) {
+        return repository.getBetween(startDateTime, endDateTime);
     }
 
     public List<Client> getAll() {
         return repository.getAll();
     }
 
-    public void update(Client client, int userId) {
-        checkNotFoundWithId(repository.save(client, userId), client.getId());
+    public void update(Client client) {
+        checkNotFoundWithId(repository.save(client), client.getId());
     }
 
     public Client create(Client client, int userId) {
-        return repository.save(client, userId);
+        return repository.save(client);
     }
 }

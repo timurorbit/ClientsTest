@@ -7,12 +7,12 @@
         <description>Location to store uploaded file</description>         <!-- move to servlet & db -->
         <param-name>file-upload</param-name>
         <param-value>
-            C:\\var\webapp\images        <!-- must be changed.... hardcoded -->
+            C:\\var\webapp\images\        <!-- must be changed.... hardcoded -->
         </param-value>
     </context-param>
 
     <display-name>Topjava</display-name>
-
+    
     <servlet>
         <servlet-name>ClientServlet</servlet-name>
         <servlet-class>ru.javawebinar.clients.web.ClientsServlet</servlet-class>

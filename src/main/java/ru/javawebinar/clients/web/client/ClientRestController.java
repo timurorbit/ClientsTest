@@ -29,13 +29,13 @@ public class ClientRestController {
     public Client get(int id) {
         int userId = SecurityUtil.authUserId();
         log.info("get meal {} for user {}", id, userId);
-        return service.get(id, userId);
+        return service.get(id);
     }
 
     public void delete(int id) {
         int userId = SecurityUtil.authUserId();
         log.info("delete meal {} for user {}", id, userId);
-        service.delete(id, userId);
+        service.delete(id);
     }
 
     public List<Client> getAll() {
@@ -54,7 +54,7 @@ public class ClientRestController {
         int userId = SecurityUtil.authUserId();
         assureIdConsistent(client, id);
         log.info("update {} for user {}", client, userId);
-        service.update(client, userId);
+        service.update(client);
     }
 
     /**
@@ -67,6 +67,6 @@ public class ClientRestController {
         int userId = SecurityUtil.authUserId();
         log.info("getBetween dates({} - {}) time({} - {}) for user {}", startDate, endDate, startTime, endTime, userId);
 
-        return service.getBetweenDates(startDate, endDate, userId);
+        return service.getBetweenDates(startDate, endDate);
     }
 }

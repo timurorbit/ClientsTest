@@ -35,7 +35,7 @@ public class Client extends AbstractBaseEntity {
         this.telephoneNumber = telephoneNumber;
     }
 
-    public Client(Integer id, String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber) {
+    public Client(Integer id, String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber, String imagePath) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;
@@ -45,6 +45,7 @@ public class Client extends AbstractBaseEntity {
         this.address = address;
         this.email = email;
         this.telephoneNumber = telephoneNumber;
+        this.imagePath = imagePath;
     }
 
     public Client( String firstName, String lastName, LocalDateTime dateTime, String status, String satisfaction, String address, String email, String telephoneNumber, String imagePath) {
@@ -148,5 +149,25 @@ public class Client extends AbstractBaseEntity {
                 ", email='" + email + '\'' +
                 ", telephoneNumber='" + telephoneNumber + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Client client = (Client) o;
+        return this.id == client.id;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + (this.firstName != null ? this.firstName.hashCode() : 0);
+        hash = 53 * hash + this.id;
+        return hash;
     }
 }

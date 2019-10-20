@@ -96,7 +96,7 @@
         </dl>
         <dl>
             <dt>Image:</dt>
-            <img alt="logo" src="" />
+            <img src="${pageContext.request.contextPath}/images/${client.imagePath}">                             <!-- ?????????????????????????   -->
         </dl>
         <input type="hidden" name="imagePath" value="${client.imagePath}">
 
