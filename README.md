@@ -4,7 +4,7 @@ This is full beta project for me and my learning Java Enterprise, web etc.
 
 Note 1: this is full beta (alpha) :-) project. Something can not work (for now its - image uploaded, but cannot read after it), something is broken, some code is indian.
 
-Note 2: If you wanna use this for u (i do not recommend this) change the path to save in web.xml, and download this pack of images for init.DB work correctly
+Note 2: If you wanna use this for u (i do not recommend this) change the path to save in web.xml, and download this pack of images for populate.DB work correctly
 https://drive.google.com/drive/folders/1YPr2E0YiqS70KUyMDGe_Ncd3nOlgsENo?usp=sharing
 
 Note 3: this is project to store clients in database, some info about them and images, also support opportunity to add images. 
