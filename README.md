@@ -14,4 +14,4 @@ Note 4: Im trying to populate my DB using blob in java and bytea in PostgreSQL, 
 
 features i want to add: validation, more tests, profiles of db(also store images in db, not only paths), and fix current problems.
 
-In this project i used: Spring MVC, Spring JDBC, Spring Context, PostgreSQL, and a bit of Junit
+In this project i used: Spring MVC, Spring JDBC, Spring Context, PostgreSQL, Tomcat and a bit of Junit
